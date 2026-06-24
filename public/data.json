@@ -5,7 +5,7 @@
     "isVerified": true,
     "bio": "Pioneering Organic Agro Inputs, Soil Health Solutions & Premium Feed Manufacturing. Based in Barabanki, empowering farmers across India and Nepal.",
     "stats": [
-      { "value": "2", "label": "Official Websites" },
+      { "value": "3", "label": "Official Websites" },
       { "value": "4", "label": "Social Channels" }
     ]
   },
@@ -60,7 +60,7 @@
       "id": "fish-gold",
       "name": "Fish Gold Industries",
       "focus": "Premium Aqua Feed",
-      "url": "https://www.instagram.com/fishgoldindustries_official/reels/?hl=en",
+      "url": "https://www.fishgoldindustries.com/",
       "icon": "FaFish",
       "color": "#3b82f6"
     }
@@ -107,6 +107,12 @@
           "icon": "VanshLogo",
           "color": "#3b82f6",
           "label": "vanshfeeds.com"
+        },
+        {
+          "url": "https://www.fishgoldindustries.com/",
+          "icon": "FaFish",
+          "color": "#0ea5e9",
+          "label": "fishgoldindustries.com"
         },
         {
           "url": "https://www.instagram.com/fishgoldindustries_official/reels/?hl=en",
