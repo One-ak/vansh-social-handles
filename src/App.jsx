@@ -37,6 +37,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
   const [scrollY, setScrollY] = useState(0);
+  const [selectedLink, setSelectedLink] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -244,7 +245,15 @@ function App() {
                         <span style={{ fontWeight: 600 }}>{link.label}</span>
                       </div>
                       <div className="link-right-wrapper">
-                        <div className="qr-container" style={{ position: 'relative' }}>
+                        <div 
+                          className="qr-container" 
+                          style={{ position: 'relative' }}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setSelectedLink(link);
+                          }}
+                        >
                           <QRCodeSVG value={link.url} size={80} level="H" />
                           <div style={{
                             position: 'absolute',
@@ -280,6 +289,39 @@ function App() {
           <p className="footer-text">© {new Date().getFullYear()} Vansh Group of Companies. All rights reserved.</p>
           <p className="footer-text" style={{ fontSize: '0.85rem', marginTop: '12px' }}>Empowering farmers in Barabanki, Uttar Pradesh, India</p>
         </footer>
+
+        {/* QR Code Modal Overlay */}
+        {selectedLink && (
+          <div className="qr-modal-overlay" onClick={() => setSelectedLink(null)}>
+            <div className="qr-modal-content" onClick={(e) => e.stopPropagation()}>
+              <button className="qr-modal-close" onClick={() => setSelectedLink(null)}>×</button>
+              <h3 style={{ marginBottom: '1.5rem', textAlign: 'center', fontWeight: '800', color: '#334155' }}>Scan QR Code</h3>
+              <div style={{ background: '#ffffff', padding: '24px', borderRadius: '24px', display: 'inline-block', position: 'relative', boxShadow: '0 10px 25px rgba(0,0,0,0.1)' }}>
+                <QRCodeSVG value={selectedLink.url} size={250} level="H" />
+                <div style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  backgroundColor: '#ffffff',
+                  padding: '8px',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
+                }}>
+                  <div style={{color: selectedLink.iconColor || selectedLink.color, fontSize: '32px', display: 'flex'}}>
+                    {IconMap[selectedLink.icon]}
+                  </div>
+                </div>
+              </div>
+              <p style={{ marginTop: '1.5rem', color: '#64748b', fontSize: '1rem', textAlign: 'center', fontWeight: 500 }}>
+                Scan to visit {selectedLink.label}
+              </p>
+            </div>
+          </div>
+        )}
 
       </div>
     </>
