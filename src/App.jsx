@@ -72,7 +72,7 @@ function App() {
       <div className="app-container">
         
         {/* Tiny Top-Nav Branding */}
-        <nav style={{ display: 'flex', justifyContent: 'center', padding: '10px 0 30px 0' }}>
+        <nav style={{ display: 'flex', justifyContent: 'center', padding: '10px 0 30px 0', position: 'relative', zIndex: 20 }}>
           <div style={{ fontWeight: '800', fontSize: '1.1rem', color: '#64748b', letterSpacing: '2px', textTransform: 'uppercase' }}>
             Vansh Group Hub
           </div>
